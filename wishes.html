@@ -107,6 +107,56 @@
       background: radial-gradient(circle, rgba(240, 169, 204, 0.6), transparent 70%);
       mix-blend-mode: screen;
     }
+    /* For tablets and smaller screens */
+@media (max-width: 768px) {
+  .card {
+    max-width: 90%;   /* shrink card width */
+    padding: 20px;
+  }
+
+  .card img.photo {
+    margin-bottom: 12px;
+  }
+
+  .animated-text {
+    font-size: 32px;  /* smaller text */
+  }
+
+  .qr {
+    width: 100px;
+    height: 100px;
+  }
+
+  .replay-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+  .card {
+    max-width: 95%;
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .animated-text {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .qr {
+    width: 80px;
+    height: 80px;
+    padding: 6px;
+  }
+
+  .replay-btn {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
   </style>
 </head>
 <body>

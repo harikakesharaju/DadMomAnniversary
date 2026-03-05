@@ -32,6 +32,30 @@
       50% { opacity: 0.5; }
       100% { opacity: 1; }
     }
+    /* For tablets and smaller screens */
+@media (max-width: 768px) {
+  .countdown {
+    font-size: 36px;   /* smaller countdown text */
+    margin-bottom: 15px;
+  }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;     /* add breathing room */
+  }
+
+  .countdown {
+    font-size: 28px;   /* even smaller for narrow screens */
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .swipe-msg {
+    font-size: 18px;   /* reduce message size */
+  }
+}
   </style>
 </head>
 <body>
