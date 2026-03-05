@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anniversary Countdown</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(120deg, #ffe4e1, #fff0f5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: 'Dancing Script', cursive;
+      overflow: hidden;
+    }
+    .countdown {
+      font-size: 48px;
+      color: #e91e63;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(233,30,99,0.7);
+    }
+    .swipe-msg {
+      font-size: 24px;
+      color: #444;
+      animation: pulse 2s infinite;
+      display: none; /* hidden by default */
+    }
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown" id="countdown"></div>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script type="module">
+    import { ANNIVERSARY_MONTH, ANNIVERSARY_DAY } from './constants.js';
+
+    let confettiTriggered = false;
+
+    function updateCountdown() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const target = new Date(year, ANNIVERSARY_MONTH, ANNIVERSARY_DAY, 0, 0, 0);
+
+      const diff = target - now;
+
+      if (now.getDate() === ANNIVERSARY_DAY && now.getMonth() === ANNIVERSARY_MONTH) {
+        if (!confettiTriggered) {
+          confettiTriggered = true;
+          launchConfetti();
+        }
+        document.getElementById("countdown").textContent = "It's March 9th!!!";
+      } else if (diff > 0) {
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff / (1000*60*60)) % 24);
+        const minutes = Math.floor((diff / (1000*60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        document.getElementById("countdown").textContent =
+          `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      } else {
+        document.getElementById("countdown").textContent =
+          `Countdown to ${ANNIVERSARY_DAY} March 💕`;
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Confetti celebration
+    function launchConfetti() {
+      const duration = 3 * 1000;
+      const end = Date.now() + duration;
+
+      (function frame() {
+        confetti({ particleCount: 7, angle: 60, spread: 55, origin: { x: 0 } });
+        confetti({ particleCount: 7, angle: 120, spread: 55, origin: { x: 1 } });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        } else {
+          gsap.to("body", {
+            opacity: 0,
+            duration: 1,
+            onComplete: () => {
+              window.location.href = "wishes.html";
+            }
+          });
+        }
+      }());
+    }
+  </script>
+</body>
+</html>
