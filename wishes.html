@@ -7,107 +7,120 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #fce4ec;
-      overflow: hidden;
-      font-family: 'Dancing Script', cursive;
-      position: relative;
-    }
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;   /* ensures inline elements align nicely */
+  background: #fce4ec;
+  overflow: hidden;
+  font-family: 'Dancing Script', cursive;
+  position: relative;
+}
 
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 18px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-      text-align: center;
-      max-width: 420px;
-      position: relative;
-      z-index: 10;
-      /* subtle decorative background */
-      background-image: radial-gradient(circle at top left, rgba(255,182,193,0.15), transparent 70%),
-                        radial-gradient(circle at bottom right, rgba(221,160,221,0.15), transparent 70%);
-      background-repeat: no-repeat;
-    }
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  text-align: center;
+  max-width: 420px;
+  margin: auto;                /* centers card */
+  display: flex;
+  flex-direction: column;
+  align-items: center;         /* centers children horizontally */
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  /* subtle decorative background */
+  background-image: radial-gradient(circle at top left, rgba(255,182,193,0.15), transparent 70%),
+                    radial-gradient(circle at bottom right, rgba(221,160,221,0.15), transparent 70%);
+  background-repeat: no-repeat;
+}
 
-    .card img.photo {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
+.card img.photo {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 0 auto 15px;         /* centers image and adds spacing */
+  display: block;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
 
-    .animated-text {
-      font-family: 'Great Vibes', cursive; /* elegant font */
-      font-size: 42px;
-      color: #e91e63;
-      margin-bottom: 15px;
-      text-shadow: 0 0 12px rgba(233,30,99,0.6);
-    }
+.animated-text {
+  font-family: 'Great Vibes', cursive; /* elegant font */
+  font-size: 42px;
+  color: #e91e63;
+  margin-bottom: 15px;
+  text-shadow: 0 0 12px rgba(233,30,99,0.6);
+  display: block;
+  text-align: center;
+}
 
-    .qr {
-      width: 120px;
-      height: 120px;
-      background: #fff;
-      padding: 8px;
-      border-radius: 10px;
-      margin: 15px auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      animation: pulseGlow 2s infinite;
-    }
+.qr {
+  width: 120px;
+  height: 120px;
+  background: #fff;
+  padding: 8px;
+  border-radius: 10px;
+  margin: 15px auto;
+  display: block;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  animation: pulseGlow 2s infinite;
+}
 
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 10px rgba(233,30,99,0.4); }
-      50% { box-shadow: 0 0 20px rgba(233,30,99,0.7); }
-      100% { box-shadow: 0 0 10px rgba(233,30,99,0.4); }
-    }
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 10px rgba(233,30,99,0.4); }
+  50% { box-shadow: 0 0 20px rgba(233,30,99,0.7); }
+  100% { box-shadow: 0 0 10px rgba(233,30,99,0.4); }
+}
 
-    .replay-btn {
-      background: #e91e63;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: transform 0.2s ease;
-    }
+.replay-btn {
+  background: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease;
+  display: inline-block;
+  margin-top: 10px;
+}
 
-    .replay-btn:hover {
-      transform: scale(1.05);
-    }
+.replay-btn:hover {
+  transform: scale(1.05);
+}
 
-    /* Floating petals and hearts */
-    .floating {
-      position: absolute;
-      font-size: 22px;
-      opacity: 0.7;
-      animation: floatRandom 25s linear infinite;
-    }
+/* Floating petals and hearts */
+.floating {
+  position: absolute;
+  font-size: 22px;
+  opacity: 0.7;
+  animation: floatRandom 25s linear infinite;
+}
 
-    @keyframes floatRandom {
-      0% { transform: translate(0,0) rotate(0deg); opacity: 0.8; }
-      25% { transform: translate(80px,-60px) rotate(90deg); opacity: 0.6; }
-      50% { transform: translate(-100px,40px) rotate(180deg); opacity: 0.8; }
-      75% { transform: translate(60px,100px) rotate(270deg); opacity: 0.6; }
-      100% { transform: translate(0,0) rotate(360deg); opacity: 0.8; }
-    }
+@keyframes floatRandom {
+  0% { transform: translate(0,0) rotate(0deg); opacity: 0.8; }
+  25% { transform: translate(80px,-60px) rotate(90deg); opacity: 0.6; }
+  50% { transform: translate(-100px,40px) rotate(180deg); opacity: 0.8; }
+  75% { transform: translate(60px,100px) rotate(270deg); opacity: 0.6; }
+  100% { transform: translate(0,0) rotate(360deg); opacity: 0.8; }
+}
 
-    /* Mouse effect highlight */
-    .highlight {
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      pointer-events: none;
-      background: radial-gradient(circle, rgba(240, 169, 204, 0.6), transparent 70%);
-      mix-blend-mode: screen;
-    }
-    /* For tablets and smaller screens */
+/* Mouse effect highlight */
+.highlight {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(240, 169, 204, 0.6), transparent 70%);
+  mix-blend-mode: screen;
+}
+
+/* For tablets and smaller screens */
 @media (max-width: 768px) {
   .card {
     max-width: 90%;   /* shrink card width */
@@ -165,7 +178,7 @@
     <h1 id="title" class="animated-text">Happy    Anniversary </h1>
     <img src="qr.png" alt="QR Code" class="qr">
     <button class="replay-btn" onclick="playVoice()">Replay Voice</button>
-    <audio id="voice" src="voice.mp3"></audio>
+    <audio id="voice" src="voice.mp3" muted></audio>
   </div>
 
   <!-- Mouse highlight effect -->
@@ -174,9 +187,9 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script>
     function playVoice() {
-      const audio = document.getElementById('voice');
-      audio.currentTime = 0;
-      audio.play();
+       const audio = document.getElementById('voice');
+  audio.muted = false;   // unmute after load
+  audio.play().catch(err => console.log("Autoplay blocked:", err));
     }
 
     window.addEventListener('load', () => {
